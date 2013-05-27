@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
+ before_filter :authenticate_user!, :except => [:show, :index]
+  
   def index
     @posts = Post.all
 
@@ -35,6 +37,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+
   end
 
   # POST /posts
